@@ -61,13 +61,13 @@ input {
     color: rgba(0,0,0,.4);
 }
 .todo-list {
-    background-color: #f5f5f5;
+    background-color: #cccbcb;
 }
 .doing-list {
-    background-color: #fee6f3;
+    background-color: #f3c9df;
 }
 .done-list {
-    background-color: #dff7f7;
+    background-color: #a0efef;
 }
 .project-card {
     display: block;

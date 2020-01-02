@@ -1,9 +1,9 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import {addTask} from '../actions'
+import { todoActions } from '../actions'
 
-const AddTask = ({dispatch, state})=>{
+const AddTask = ({ dispatch, state})=>{
     let inputText, inputExecutor;
 
     const submitTask = (e) => {
@@ -11,11 +11,11 @@ const AddTask = ({dispatch, state})=>{
 
         if (!inputText.value.trim())
             return;
-
-        dispatch(addTask({
+        let data = {
             text: inputText.value,
             executor: inputExecutor.value.trim() ? inputExecutor.value : 'All'
-        }));
+        }
+        dispatch(todoActions({ type: 'ADD_TASK', data: data}))
 
         inputText.value = '';
         inputExecutor.value = '';
@@ -30,5 +30,6 @@ const AddTask = ({dispatch, state})=>{
         </div>
     )
 }
+
 
 export default connect()(AddTask)

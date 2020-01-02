@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { changeTaskStatus, removeTask } from '../actions';
+import { todoActions } from '../actions';
 
 import Card from '../components/card'
 
@@ -8,8 +8,7 @@ const List = ({
         status,
         children,
         tasks,
-        changeStatus,
-        remove
+        todoActions
     }) => (
         <div className={`list ${status.toLowerCase()}-list`}>
             <h5>{children} <span>{tasks.length}</span></h5>
@@ -18,8 +17,8 @@ const List = ({
                 return(<Card
                     key={task.id}
                     {...task}
-                    onChangeClick={changeStatus}
-                    onRemoveClick={remove}
+                    onChangeClick={todoActions}
+                    onRemoveClick={todoActions}
                 />)
             }
             )}
@@ -34,11 +33,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        changeStatus: (id) => {
-            dispatch(changeTaskStatus(id));
-        },
-        remove: (id) => {
-            dispatch(removeTask(id));
+        todoActions: (data) => {
+            dispatch(todoActions(data));
         }
     };
 };
